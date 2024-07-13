@@ -17,8 +17,10 @@ if ($LASTEXITCODE -eq 0) {
 } else {
     Write-Host "Build failed. Please check for errors." -ForegroundColor Red
 }
-twine upload --repository testpypi dist/*
-# pip install --index-url https://test.pypi.org/simple/ ppilot
 
-# if everything ok
-# twine upload dist/*
+twine upload --repository testpypi dist/*
+
+# !! ATTENTION: FastAPI on Test-Pypi is broken
+# !! So, to properly test, manually install fastapi firstly
+
+# pip install --index-url https://test.pypi.org/simple/ ppilot
