@@ -1,0 +1,30 @@
+[project]
+name = "ppilot"
+version = "0.1.0.dev2"
+requires-python = ">=3.9"
+description = "An easy-to-use local plugin integration for Agentic LLM Apps."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "riven2333", email = "2796839179@qq.com"},
+    { name = "blueyo0", email = "small_dark@sina.com"},
+]
+dependencies = [
+    "fastapi>=0.100.0",
+    "psutil>=5.8.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/riven2333/PrivacyPilot"
+
+[build-system]
+requires = ["setuptools>=67.8.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.codespell]
+skip = '.git,*.pdf,*.svg'
+#
+# ignore-words-list = ''
+
+[project.scripts]
+ppilot_serve = "ppilot.serve:main"
