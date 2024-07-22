@@ -8,8 +8,13 @@
 '''
 
 from fastapi import FastAPI
+from fastapi.requests import Request
+from fastapi.responses import JSONResponse
+
 from .cpu import get_cpu_model
 from .disk import get_disk_usage
+from .python_interpreter import python_interpreter
+
 
 app = FastAPI()
 
@@ -25,6 +30,13 @@ async def get_disk_info():
     print("[API /disk]", disk_usage)
     return disk_usage
 
+@app.post("/python_interpreter")
+async def run_python_code(request: Request):
+    form_data = await request.form()
+    result = python_interpreter(form_data["input_code"])
+    print("[API /python_interpreter]", result["status"])
+    return JSONResponse(content=result)
+
 @app.get("/manifest.json")
 async def get_manifest():
     # TODO: adjust for lobe-chat & coze
@@ -35,6 +47,7 @@ async def get_manifest():
         "endpoints": [
             {"path": "/cpu", "description": "Get CPU usage"},
             {"path": "/disk", "description": "Get disk usage"},
+            {"path": "/python_interpreter", "description": "Run python code with basic venv"},
             {"path": "/manifest.json", "description": "Get API manifest"}
         ]
     }
