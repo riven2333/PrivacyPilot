@@ -1,6 +1,6 @@
-# PrivacyPilot
+# PrivacyPilot: Privately Deployed AI Agentic Plugin
 
-An easy-to-use local plugin integration for Agentic LLM Apps.
+A locally deployed plugin integration for Agentic LLM Apps.
 
 ## Install
 ```
@@ -15,5 +15,5 @@ ppilot_serve
 
 ## Contribution
 
-For now, we recommand you to contribute PR to the develop branch.
+You are recommanded to contribute PR to the main branch since it is a tiny project now.
 Thanks for your contribution!
