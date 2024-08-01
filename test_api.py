@@ -63,7 +63,7 @@ def test_file_finder_endpoint():
     response = requests.post(
         url=f"{BASE_URL}/file_finder", 
         data={
-            "pattern": '.*\.toml',
+            "pattern": '.*toml',
             "src_dir": os.path.dirname(os.path.abspath(__file__)),
         })
     if response.status_code == 200:
