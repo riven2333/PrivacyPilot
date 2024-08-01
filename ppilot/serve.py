@@ -9,6 +9,7 @@
 from fastapi import FastAPI
 from fastapi.requests import Request
 from fastapi.responses import JSONResponse
+import os
 
 from .cpu import get_cpu_model
 from .disk import get_disk_usage
@@ -62,6 +63,7 @@ async def get_manifest():
 
 def main():
     import uvicorn
+    os.environ['no_proxy'] = "localhost,127.0.0.*"
     uvicorn.run(app, host="0.0.0.0", port=15260)
 
 if __name__ == "__main__":
