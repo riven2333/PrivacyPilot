@@ -2,7 +2,6 @@
 '''
 @File    :   serve.py
 @Time    :   2024/07/13 22:03:03
-@Author  :   Haoyu Wang 
 @Contact :   small_dark@sina.com
 @Brief   :   enable ppilot_serve cmd
 '''
@@ -10,10 +9,12 @@
 from fastapi import FastAPI
 from fastapi.requests import Request
 from fastapi.responses import JSONResponse
+import os
 
 from .cpu import get_cpu_model
 from .disk import get_disk_usage
 from .python_interpreter import python_interpreter
+from .file_finder import find_file
 
 
 app = FastAPI()
@@ -37,6 +38,13 @@ async def run_python_code(request: Request):
     print("[API /python_interpreter]", result["status"])
     return JSONResponse(content=result)
 
+@app.post("/file_finder")
+async def run_file_finder(request: Request):
+    form_data = await request.form()
+    result = find_file(form_data["pattern"], form_data["src_dir"])
+    print("[API /file_finder]", result)
+    return result
+
 @app.get("/manifest.json")
 async def get_manifest():
     # TODO: adjust for lobe-chat & coze
@@ -55,7 +63,8 @@ async def get_manifest():
 
 def main():
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    os.environ['no_proxy'] = "localhost,127.0.0.*"
+    uvicorn.run(app, host="0.0.0.0", port=15260)
 
 if __name__ == "__main__":
     main()
