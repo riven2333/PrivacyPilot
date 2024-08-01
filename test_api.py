@@ -1,6 +1,8 @@
 import requests
+import os
+os.environ['no_proxy'] = 'localhost,127.0.0.*'
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = "http://localhost:15260"
 
 TEST_DATA_CODE = """
 import platform
@@ -57,15 +59,31 @@ def test_python_interpreter_endpoint():
     else:
         print("Failed to execute code. Status code: ", response.status_code)
 
+def test_file_finder_endpoint():
+    response = requests.post(
+        url=f"{BASE_URL}/file_finder", 
+        data={
+            "pattern": '.*toml',
+            "src_dir": os.path.dirname(os.path.abspath(__file__)),
+        })
+    if response.status_code == 200:
+        data = response.json()
+        print("API Python Interpreter:")
+        print(data)
+    else:
+        print("Failed to execute code. Status code: ", response.status_code)
+
 def main():
-    print("Testing CPU endpoint:")
-    test_cpu_endpoint()
-    print("\nTesting Disk endpoint:")
-    test_disk_endpoint()
-    print("\nTesting Manifest endpoint:")
-    test_manifest_endpoint()
-    print("\nTesting Interpreter endpoint:")
-    test_python_interpreter_endpoint()
+    # print("Testing CPU endpoint:")
+    # test_cpu_endpoint()
+    # print("\nTesting Disk endpoint:")
+    # test_disk_endpoint()
+    # print("\nTesting Manifest endpoint:")
+    # test_manifest_endpoint()
+    # print("\nTesting Interpreter endpoint:")
+    # test_python_interpreter_endpoint()
+    print("\nTesting FileFinder endpoint:")
+    test_file_finder_endpoint()
 
 if __name__ == "__main__":
     main()

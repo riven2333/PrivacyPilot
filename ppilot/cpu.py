@@ -2,7 +2,6 @@
 '''
 @File    :   cpu.py
 @Time    :   2024/07/13 21:29:08
-@Author  :   Haoyu Wang 
 @Contact :   small_dark@sina.com
 @Brief   :   local plugin for cpu
 '''
