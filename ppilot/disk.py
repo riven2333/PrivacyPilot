@@ -2,7 +2,6 @@
 '''
 @File    :   disk.py
 @Time    :   2024/07/13 22:05:53
-@Author  :   Haoyu Wang 
 @Contact :   small_dark@sina.com
 @Brief   :   local plugin for disk usage
 '''
