@@ -12,6 +12,8 @@ from .query_service import QueryService
 from .reranker import AutoReranker
 from .vector_index import AutoVectorIndex
 
+__all__ = ["LocalRAG", "clear_local_rag_cache"]
+
 
 @cache
 class LocalRAG:
@@ -99,3 +101,7 @@ class LocalRAG:
             self.process_files(force_reprocess)
         doc_parts = self._query_service.query(query_text, k)
         return [doc_part.get_data() for doc_part in doc_parts]
+
+
+def clear_local_rag_cache() -> None:
+    LocalRAG.cache_clear()
