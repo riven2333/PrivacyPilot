@@ -95,11 +95,11 @@ class LocalRAG:
         self._vector_index.add_documents(self._documents)
         self._processed = True
 
-    def query(
+    async def query(
         self, query_text: str, k: int = 5, force_reprocess: bool = False
     ) -> list[str | bytes]:
         if force_reprocess:
-            self.process_files(force_reprocess)
+            await self.process_files(force_reprocess)
         doc_parts = self._query_service.query(query_text, k)
         return [doc_part.get_data() for doc_part in doc_parts]
 

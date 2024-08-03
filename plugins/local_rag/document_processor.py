@@ -1,5 +1,5 @@
 from collections import defaultdict
-from concurrent.futures import Future, ProcessPoolExecutor, ThreadPoolExecutor
+from concurrent.futures import Future, ThreadPoolExecutor
 from multiprocessing import cpu_count
 from pathlib import Path
 
@@ -79,7 +79,7 @@ class DocumentProcessor:
         ]
 
         if len(type_and_doc_pairs) > 1:
-            with ProcessPoolExecutor(
+            with ThreadPoolExecutor(
                 max_workers=min(n_core, len(type_and_doc_pairs))
             ) as executor:
                 futures = [

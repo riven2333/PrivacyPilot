@@ -71,7 +71,7 @@ async def run_local_rag(request: RAGRequest):
             results=[],
         )
     else:
-        results = rag.query(request.query)
+        results = await rag.query(request.query)
         print("[API /local_rag]", results)
         return RAGResponse(
             status="success",
