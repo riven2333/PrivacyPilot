@@ -1,0 +1,28 @@
+{
+  "document_loader_configs": [
+    {
+      "extension": ".txt"
+    }
+  ],
+  "document_parser_configs": [
+    {
+      "extension": ".txt",
+      "char_chunk_size": 1024,
+      "char_overlap_size": 256
+    }
+  ],
+  "embedder_config": {
+    "type": "flag_bge_m3",
+    "cache_folder": "../cache",
+    "batch_size": 12,
+    "max_seq_length": 1024,
+    "endpoint": "https://hf-mirror.com"
+  },
+  "vector_index_config": {
+    "type": "faiss"
+  },
+  "reranker_config": {
+    "type": "identity"
+  },
+  "data_directory": "../data/"
+}
