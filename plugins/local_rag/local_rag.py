@@ -84,9 +84,10 @@ class LocalRAG:
     def processed(self) -> bool:
         return self._processed
 
-    def process_files(self, force_reprocess: bool = False) -> None:
+    async def process_files(self, force_reprocess: bool = False) -> None:
         if self._processed and not force_reprocess:
             return
+        self._processed = False
         file_dict = self._file_collector.collect_files()
         documents = self._document_processor.process_documents(file_dict)
         self._documents = self._embedder.create_embeddings(documents)
