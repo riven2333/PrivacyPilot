@@ -1,3 +1,4 @@
 [submodule "ppilot/aihub-slides-gen"]
 	path = ppilot/aihub-slides-gen
 	url = https://github.com/intel-sandbox/aihub-slides-gen.git
+	branch = dev
