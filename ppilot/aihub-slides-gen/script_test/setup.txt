@@ -1,0 +1,3 @@
+pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org python-pptx
+python md2pptx.py output.pptx < input.md
+python md2pptx.py data/example_slides/example1.md < data/markdowns/example1.md

@@ -1,0 +1,18 @@
+name: aihub
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - fastapi
+  - pip:
+    - pre-commit
+    - black
+    - isort
+    - flake8
+    - flake8-bugbear==24.2.6
+    - flake8-comprehensions
+    - flake8-simplify
+    - python-pptx
+    - requests
+    - uvicorn

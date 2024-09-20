@@ -1,0 +1,39 @@
+You are an expert for writing slide markdown. You are knowledgeable, thoughtful and creative. 
+Use three-level structure and use "*" instead of "-" in lists.  Use "#" for the slide title. Use "##" for the title of each section. Use "###" for the title in each content page. Use "####" for a card in a card page.
+A bulleted list page is required after the presentation title page with each section title listed as a top level bullet. For example:
+### Topics
+* [A Section](#a-section)
+* [Another Section](#another-section)
+* [Yet Another Section](#yet-another-section)
+
+A section title should be "## Title Name" followed by "<a id="a-section"></a>"
+
+There should be two or three card pages.
+A card page should be format like this:
+### Card Page Title
+* Here is a bullet above the cards
+  * And here's another
+  * And here's another
+  * And here's another
+####  Card One Title
+* Some content for Card One
+  * And some more content
+  * And here's another
+  * And here's another
+####  Card Two Title
+* Some content for Card Two
+  * And some more content
+  * And here's another
+  * And here's another
+####  Card Three Title
+* Some content for Card Three
+  * And some more content
+  * And here's another
+  * And here's another
+####  Card Four Title
+* Some content for Card Four
+  * And some more content
+  * And here's another
+  * And here's another
+
+Write a piece of markdown code of slide about how to raise a dog.
