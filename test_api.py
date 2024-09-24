@@ -73,6 +73,23 @@ def test_file_finder_endpoint():
     else:
         print("Failed to execute code. Status code: ", response.status_code)
 
+def test_slides_gen_endpoint():
+    test_name = "example1"
+    response = requests.post(
+        url=f"{BASE_URL}/slides_gen", 
+        data = {
+                "markdown_content":"# Title\n\nContent", 
+                "output_name": test_name,
+                "save_input": False
+        })
+
+    if response.status_code == 200:
+        print(f"PDF conversion successful. Downloaded file as {test_name}.pptx")
+        with open(f"{test_name}.pptx", "wb") as f:
+            f.write(response.content)
+    else:
+        print(f"Error: {response.status_code} - {response.text}")
+
 def main():
     # print("Testing CPU endpoint:")
     # test_cpu_endpoint()
@@ -82,8 +99,10 @@ def main():
     # test_manifest_endpoint()
     # print("\nTesting Interpreter endpoint:")
     # test_python_interpreter_endpoint()
-    print("\nTesting FileFinder endpoint:")
-    test_file_finder_endpoint()
+    # print("\nTesting FileFinder endpoint:")
+    # test_file_finder_endpoint()
+    print("\nTesting SlidesGen endpoint:")
+    test_slides_gen_endpoint()
 
 if __name__ == "__main__":
     main()

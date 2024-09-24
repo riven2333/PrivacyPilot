@@ -12,6 +12,9 @@ authors = [
 dependencies = [
     "fastapi>=0.100.0",
     "psutil>=5.8.0",
+    "lxml>=5.2.2",
+    "python-pptx>=1.0.1",
+    "python-multipart>=0.0.9",
 ]
 
 [project.urls]
