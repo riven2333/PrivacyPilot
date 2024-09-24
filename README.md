@@ -15,6 +15,6 @@ ppilot_serve
 
 ## Contribution
 
-You are recommanded to contribute PR to the main branch since it is a tiny project now.
+You are recommanded to contribute PR to the develop branch.
 
 Thanks for your contribution!
