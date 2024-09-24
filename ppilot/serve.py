@@ -6,18 +6,26 @@
 @Brief   :   enable ppilot_serve cmd
 '''
 
-from fastapi import FastAPI
-from fastapi.requests import Request
-from fastapi.responses import JSONResponse
 import os
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 from .cpu import get_cpu_model
 from .disk import get_disk_usage
 from .python_interpreter import python_interpreter
 from .file_finder import find_file
-
+from .certificate_utils import CERTIFICATE_PATH, SSL_KEY_PATH
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust for specific domains in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/cpu")
 async def get_cpu_info():
@@ -47,7 +55,6 @@ async def run_file_finder(request: Request):
 
 @app.get("/manifest.json")
 async def get_manifest():
-    # TODO: adjust for lobe-chat & coze
     manifest = {
         "name": "System Info API",
         "version": "1.0.0",
@@ -64,7 +71,13 @@ async def get_manifest():
 def main():
     import uvicorn
     os.environ['no_proxy'] = "localhost,127.0.0.*"
-    uvicorn.run(app, host="0.0.0.0", port=15260)
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=15260,
+        ssl_certfile=CERTIFICATE_PATH,
+        ssl_keyfile=SSL_KEY_PATH
+    )
 
 if __name__ == "__main__":
     main()

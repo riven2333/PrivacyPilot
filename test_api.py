@@ -2,7 +2,7 @@ import requests
 import os
 os.environ['no_proxy'] = 'localhost,127.0.0.*'
 
-BASE_URL = "http://localhost:15260"
+BASE_URL = "https://localhost:15260"
 
 TEST_DATA_CODE = """
 import platform
