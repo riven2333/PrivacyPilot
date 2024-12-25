@@ -1,4 +1,4 @@
-# PrivacyPilot: Privately Deployed AI Agentic Plugin
+# PrivacyPilot: An LLM Agent Plugin for Privacy Protection
 
 A locally deployed plugin integration for Agentic LLM Apps. This repo is at a very early stage of development.
 
